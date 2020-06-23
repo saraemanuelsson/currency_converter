@@ -7,8 +7,9 @@ document.addEventListener("DOMContentLoaded", () => {
         data: {
             rates: [],
             amount: "",
-            firstCurrency: "",
-            secondCurrency: ""
+            firstRate: "",
+            secondRate: "",
+            convertedResult: ""
         },
         computed: {
 
@@ -24,8 +25,16 @@ document.addEventListener("DOMContentLoaded", () => {
             },
 
             convertCurrencies: function() {
-
+                if (this.firstRate === "1") {
+                    this.convertedResult = this.amount * this.firstRate * this.secondRate
+                } else if (this.secondRate === "1") {
+                    this.convertedResult = this.amount * (this.secondRate) / this.firstRate
+                }
             },
+
+            getCurrency: function(rate) {
+
+            }
 
         }
     })

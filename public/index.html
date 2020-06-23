@@ -12,22 +12,25 @@
     <div id="app">
         <h1>Currency Converter</h1>
         <form v-on:submit.prevent="convertCurrencies">
-            <input placeholder="Amount" type="number" v-model="amount">
-            <select name="firstCurrency" id="firstCurrency" v-model="firstCurrency">
+            <label for="input-amount">Amount:</label>
+            <input id="input-amount" placeholder="Amount" type="number" v-model="amount">
+            <label for="from">From:</label>
+            <select id="from" name="firstCurrency" id="firstCurrency" v-model="firstRate">
                 <option value="Currency">Currency</option>
-                <option v-for="(rate, currency) in rates" value={{rate}}">{{ currency }}</option>
+                <option value="1">EUR</option>
+                <option v-for="(rate, currency) in rates" :value="rate">{{ currency }}</option>
             </select>
-            <p>TO</p>
-            <select name="secondCurrency" id="secondCurrency" v-model="secondCurrency">
+            <label for="to">To:</label>
+            <select id="to" name="secondCurrency" id="secondCurrency" v-model="secondRate">
                 <option value="Currency">Currency</option>
-                <option v-for="(rate, currency) in rates" value={{rate}}">{{ currency }}</option>
+                <option value="1">EUR</option>
+                <option v-for="(rate, currency) in rates" :value="rate">{{ currency }}</option>
             </select>
             <input type="submit" value="Convert">
         </form>
-        <!-- <section>
-            <h3>{{ amount }} {{firstCurrency}} is</h3>
-            <h2 id="result-box">{{ convertResult }} {{ secondCurrency }}</h2>
-        </section> -->
+        <section>
+            <h2>{{ convertedResult}}</h2>
+        </section>
     </div>
 </body>
 </html>
