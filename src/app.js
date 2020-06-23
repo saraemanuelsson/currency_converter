@@ -28,13 +28,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (this.firstRate === "1") {
                     this.convertedResult = this.amount * this.firstRate * this.secondRate
                 } else if (this.secondRate === "1") {
-                    this.convertedResult = this.amount * (this.secondRate) / this.firstRate
+                    this.convertedResult = this.amount * this.secondRate / this.firstRate
+                } else {
+                    const amountInEuros = this.amount * (1 / this.firstRate)
+                    this.convertedResult = amountInEuros * this.secondRate
                 }
             },
-
-            getCurrency: function(rate) {
-
-            }
 
         }
     })
