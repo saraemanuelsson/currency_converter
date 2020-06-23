@@ -10,7 +10,24 @@
 </head>
 <body>
     <div id="app">
-        
+        <h1>Currency Converter</h1>
+        <form v-on:submit.prevent="convertCurrencies">
+            <input placeholder="Amount" type="number" v-model="amount">
+            <select name="firstCurrency" id="firstCurrency" v-model="firstCurrency">
+                <option value="Currency">Currency</option>
+                <option v-for="(rate, currency) in rates" value={{rate}}">{{ currency }}</option>
+            </select>
+            <p>TO</p>
+            <select name="secondCurrency" id="secondCurrency" v-model="secondCurrency">
+                <option value="Currency">Currency</option>
+                <option v-for="(rate, currency) in rates" value={{rate}}">{{ currency }}</option>
+            </select>
+            <input type="submit" value="Convert">
+        </form>
+        <!-- <section>
+            <h3>{{ amount }} {{firstCurrency}} is</h3>
+            <h2 id="result-box">{{ convertResult }} {{ secondCurrency }}</h2>
+        </section> -->
     </div>
 </body>
 </html>
